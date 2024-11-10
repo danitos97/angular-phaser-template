@@ -1,10 +1,10 @@
-import { eventBus } from "../../../shared/eventBus";
+import { SCENE_KEYS } from "../../../shared/enums";
 
 export default class Main extends Phaser.Scene{
 
 
     constructor(){
-        super("main");
+        super(SCENE_KEYS.main);
     }
 
     create(){

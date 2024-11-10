@@ -2,10 +2,10 @@
     <div class="fps">{{fps()}}</div>
     <section>
         @switch (scene()) {
-            @case ("menu") {
+            @case (sceneKeys.menu) {
                 <app-menu></app-menu>
             }
-            @case ("main") {
+            @case (sceneKeys.main) {
                 main
             }
         }

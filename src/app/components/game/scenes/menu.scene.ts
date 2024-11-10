@@ -1,3 +1,4 @@
+import { SCENE_KEYS } from "../../../shared/enums";
 import { lookForGamepad, updateFPS } from "../../../shared/functions";
 
 export default class Menu extends Phaser.Scene{
@@ -7,7 +8,7 @@ export default class Menu extends Phaser.Scene{
     public pad?: Phaser.Input.Gamepad.Gamepad;
 
     constructor(){
-        super("menu");
+        super(SCENE_KEYS.menu);
     }
 
     create(){

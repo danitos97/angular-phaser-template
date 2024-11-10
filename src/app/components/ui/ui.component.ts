@@ -1,7 +1,8 @@
 import { NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { eventBus, EventList } from '../../shared/eventBus';
 import { MenuComponent } from "./menu/menu.component";
+import { EventList, SCENE_KEYS } from '../../shared/enums';
+import { eventBus } from '../../shared/functions';
 
 @Component({
     selector: 'app-ui',
@@ -12,6 +13,8 @@ import { MenuComponent } from "./menu/menu.component";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiComponent {
+
+    sceneKeys = SCENE_KEYS
 
     isLandscape = signal(true);
     fps   = signal(0);

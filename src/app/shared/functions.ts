@@ -1,5 +1,8 @@
 import { SceneWithPad } from "../interfaces/phaser-extensions";
-import { eventBus, EventList } from "./eventBus";
+import { Events } from 'phaser';
+import { EventList } from "./enums";
+
+export const eventBus = new Events.EventEmitter();
 
 export function updateFPS(scene: Phaser.Scene & {fps: number} ){
     scene.time.addEvent({
