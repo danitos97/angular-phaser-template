@@ -1,0 +1,20 @@
+@let text = strings();
+<section>
+    <div>
+        <label for="sound">{{text.options.sound}}</label>
+        <input type="range" id="sound" #soundElement (change)="changeSound(soundElement.value)" [value]="sound()">
+    </div>
+    <div>
+        <label for="music">{{text.options.music}}</label>
+        <input type="range" id="music" #musicElement (change)="changeMusic(musicElement.value)" [value]="music()">
+    </div>
+    <div>
+        <label for="lang">{{text.options.lang}}</label>
+        <select name="lang" id="lang"  #langElement  (change)="changeLang(langElement.value)" [value]="lang()">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    <br>
+    <button (click)="visible.set(false)">{{text.back}}</button>
+</section>

@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import Phaser from 'phaser';
 import Main from './scenes/main.scene';
 import Menu from './scenes/menu.scene';
+import { eventBus } from '../../shared/functions';
+import { EventList, SCENE_KEYS } from '../../shared/enums';
 
 const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
@@ -9,7 +11,7 @@ const config: Phaser.Types.Core.GameConfig = {
     height: 1080,
     parent: "phaser-container",
     scene: [Menu, Main],
-    backgroundColor: "#666",
+    backgroundColor: "#333",
     scale:{
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
@@ -32,9 +34,15 @@ const config: Phaser.Types.Core.GameConfig = {
     standalone: true,
     imports: [],
     template: '<div id="phaser-container"></div>',
-    styles: ':host{position:fixed;width:100%;height:100%;background-color: black;}',
+    styles: ':host{position:fixed;width:100%;height:100%; background-color: black;}',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GameComponent implements OnInit{
-    ngOnInit(){ new Phaser.Game(config); }
+    ngOnInit(){ 
+        const game = new Phaser.Game(config); 
+        eventBus.on(EventList.ChangeScene, (scene: SCENE_KEYS) => {
+            game.scene.getScenes(true)[0].scene.stop();
+            game.scene.start(scene);
+        })
+    }
 }

@@ -1,0 +1,23 @@
+section{
+    > div {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        margin-bottom: 12px;
+    }
+}
+label{
+    margin-right: 16px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+select{
+    font-size: 18px;
+    padding: .2em;
+}
+button{
+    padding: .5em 1em;
+    font-size: 18px;
+    font-weight: bolder;
+    cursor: pointer;
+}

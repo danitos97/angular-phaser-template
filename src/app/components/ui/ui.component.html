@@ -1,12 +1,12 @@
 <main [ngStyle]="isLandscape()? {'height': '100%'} : {'width': '100%'}">
-    <div class="fps">{{fps()}}</div>
+    <div class="fps">{{fps() || ""}}</div>
     <section>
         @switch (scene()) {
             @case (sceneKeys.menu) {
                 <app-menu></app-menu>
             }
             @case (sceneKeys.main) {
-                main
+                <app-main></app-main>
             }
         }
         

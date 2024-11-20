@@ -5,4 +5,20 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    user-select: none;
 }
+
+// input[type="range"] {
+// 	font-size: 1.5rem;
+// 	width: 12.5em;
+// }
+
+// input[type="range"] {
+// 	color: #ef233c;
+// 	--thumb-height: 1.125em;
+// 	--track-height: 0.125em;
+// 	--track-color: rgba(0, 0, 0, 0.2);
+// 	--brightness-hover: 180%;
+// 	--brightness-down: 80%;
+// 	--clip-edges: 0.125em;
+// }

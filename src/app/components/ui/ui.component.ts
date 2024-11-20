@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MenuComponent } from "./menu/menu.component";
 import { EventList, SCENE_KEYS } from '../../shared/enums';
 import { eventBus } from '../../shared/functions';
+import { MainComponent } from "./main/main.component";
 
 @Component({
     selector: 'app-ui',
     standalone: true,
-    imports: [NgStyle, MenuComponent],
+    imports: [NgStyle, MenuComponent, MainComponent],
     templateUrl: './ui.component.html',
     styleUrl: './ui.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -18,14 +19,17 @@ export class UiComponent {
 
     isLandscape = signal(true);
     fps   = signal(0);
-    pad   = signal<Phaser.Input.Gamepad.Gamepad | null>(null);
-    scene = signal<"menu"|"main">("menu");
+    scene = signal(SCENE_KEYS.menu);
 
     constructor(){
         this.resize();
-        window.addEventListener("resize", () => this.resize())
+        window.addEventListener("resize", () => this.resize());
+
+        //prevent zoom
+        window.addEventListener('wheel', e => this.handleWheel(e), {passive: false});
+        window.addEventListener('keydown', e => this.handleKeyDown(e));
+
         eventBus.on(EventList.UpdateFPS,    this.fps.set);
-        eventBus.on(EventList.PadConnected, this.pad.set);
         eventBus.on(EventList.ChangeScene,  this.scene.set);
     }
 
@@ -35,4 +39,16 @@ export class UiComponent {
             this.isLandscape.update(value => !value);
         }
     }
+    handleWheel(e: WheelEvent) {
+        if (e.ctrlKey || e.metaKey) {
+          e.preventDefault();
+        }
+    };
+  
+    handleKeyDown (e: KeyboardEvent)  {
+        if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-'|| e.key==='=')) {
+            e.preventDefault();
+        }
+    };
+  
 }

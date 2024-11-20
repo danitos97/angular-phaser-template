@@ -5,5 +5,13 @@ export enum SCENE_KEYS {
 export enum EventList {
     UpdateFPS = "UpdateFPS",
     PadConnected = "PadConnected",
-    ChangeScene = "ChangeScene"
+    ChangeScene = "ChangeScene",
+    MenuIndexReduce = "MenuIndexReduce",
+    MenuIndexIncrease = "MenuIndexIncrease",
+    MenuSelect = "MenuSelect",
+    ConfigChange = "ConfigChange"
+}
+export enum SFX_KEYS {
+    song = "song",
+    ui_move = "ui_move"
 }

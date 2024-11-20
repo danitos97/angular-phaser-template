@@ -1,0 +1,27 @@
+:host{
+    display: grid  !important;
+    place-items: center;
+    background-color: #351a3d;
+    text-align: center;
+}
+h1{
+    color: white;
+    font-size: 48px;
+    margin-bottom: 32px;
+}
+button{
+    // padding: .5em 1em;
+    font-size: 24px;
+    font-weight: 500;
+    
+    width: 300px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: #fa4853;
+    color: #eee;
+    &.selected, &:hover{
+        background-color: hsl(356, 100%, 58%);
+        color: white;
+        cursor: pointer;
+    }
+}

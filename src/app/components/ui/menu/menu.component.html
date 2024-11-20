@@ -1,1 +1,17 @@
+@if(!optionsVisible()){
+    <div>
+        @let i = index();
+        @let text = strings().menu;
+        <section>
+            <h1>Angular - Phaser Game</h1>
+        </section>
+        <button #button [ngClass]="{'selected': i === 0}" (click)="changeScene()">{{text.newGame}}</button><br><br>
+        <button #button [ngClass]="{'selected': i === 1}" (click)="changeScene()">{{text.continue}}</button><br><br>
+        <button #button [ngClass]="{'selected': i === 2}" (click)="openOptions()">{{text.options}}</button><br>
+    </div>
+}
+@else {
+    <app-options [(visible)]="optionsVisible"></app-options>
+}
+
 
